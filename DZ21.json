@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "c7c64a64-cbfa-4225-b350-35d8690a46a4",
+		"name": "DZ21",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29634348"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Maria\",\r\n  \"lastName\": \"Valida\",\r\n  \"email\": \"maria.valida999@gmail.com\",\r\n  \"password\": \"Maria050\",\r\n  \"repeatPassword\": \"Maria050\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://qauto.forstudy.space/api/auth/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"maria.valida999@gmail.com\",\r\n  \"password\": \"Maria050\",\r\n  \"remember\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://qauto.forstudy.space/api/auth/signin"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Info",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"photo\": \"user-1621352948859.jpg\",\r\n  \"name\": \"Daria\",\r\n  \"lastName\": \"Zaitseva\",\r\n  \"dateBirth\": \"2021-03-17T15:21:05.000Z\",\r\n  \"country\": \"Ukraine\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://qauto.forstudy.space/api/users/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "Cars",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carBrandId\": 4,\r\n  \"carModelId\": 16,\r\n  \"mileage\": 122\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://qauto.forstudy.space/api/cars"
+			},
+			"response": []
+		},
+		{
+			"name": "Expenses",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carId\": 54284,\r\n  \"reportedAt\": \"2021-05-17\",\r\n  \"mileage\": 122,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://qauto.forstudy.space/api/expenses"
+			},
+			"response": []
+		}
+	]
+}
