@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Обчислення зарплати та бонусів</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p#result {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Калькулятор зарплати та бонусів</h1>
+    
+    <form>
+        <label for="yearsWorked">Кількість років роботи:</label>
+        <input type="number" id="yearsWorked" name="yearsWorked" required><br><br>
+
+        <label for="salary">Поточна зарплата:</label>
+        <input type="number" id="salary" name="salary" required><br><br>
+
+        <button type="button" onclick="calculateSalary()">Розрахувати</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateSalary() {
+            var yearsWorked = parseFloat(document.getElementById("yearsWorked").value);
+            var salary = parseFloat(document.getElementById("salary").value);
+
+            if (!isNaN(yearsWorked) && !isNaN(salary)) {
+                if (yearsWorked >= 1 && yearsWorked <= 3) {
+                    salary *= 1.1; 
+                } else if (yearsWorked > 3) {
+                    salary *= 1.2; 
+                }
+
+                if (salary < 4000) {
+                    salary += 1000; 
+                } else {
+                    salary += 500; 
+                }
+
+                document.getElementById("result").innerHTML = "Зарплата співробітника: " + salary;
+            } else {
+                document.getElementById("result").innerHTML = "Будь ласка, введіть коректні дані.";
+            }
+        }
+    </script>
+</body>
+</html>
