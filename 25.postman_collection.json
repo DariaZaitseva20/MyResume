@@ -139,12 +139,8 @@
 							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
-							"pm.test(\"Save carId from Cars response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    var carId = jsonData.carId; \r",
-							"    console.log(\"carId:\", carId);\r",
-							"    pm.environment.set(\"carId\", carId); \r",
-							"});\r",
+							"\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -154,7 +150,28 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							""
+							"pm.sendRequest({\r",
+							"  url: pm.variables.get(\"URL\") + \"/cars\",\r",
+							"  method: \"POST\",\r",
+							"  header: {\r",
+							"    \"Content-Type\": \"application/json\"\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: \"raw\",\r",
+							"    raw: JSON.stringify({\r",
+							"      \"carBrandId\": 3,\r",
+							"      \"carModelId\": 12,\r",
+							"      \"mileage\": 122\r",
+							"    })\r",
+							"  }\r",
+							"}, function (err, res) {\r",
+							"  if (err) {\r",
+							"    console.error(err);\r",
+							"  } else {\r",
+							"    var responseJson = res.json();\r",
+							"    pm.environment.set(\"carId\", responseJson.data.carId);\r",
+							"  }\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -165,7 +182,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"carBrandId\": 4,\r\n  \"carModelId\": 16,\r\n  \"mileage\": 122\r\n}",
+					"raw": "{\r\n  \"carBrandId\": 3,\r\n  \"carModelId\": 12,\r\n  \"mileage\": 122\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -192,10 +209,6 @@
 					"script": {
 						"exec": [
 							"\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
 							"pm.test(\"Response is JSON\", function () {\r",
 							"  pm.response.to.be.json;\r",
 							"});\r",
@@ -213,7 +226,6 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -225,7 +237,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"carId\": 56247,\r\n  \"reportedAt\": \"2023-09-29T11:57:31.534Z\",\r\n  \"mileage\": 400,\r\n  \"liters\": 20,\r\n  \"totalCost\": 14,\r\n  \"forceMileage\": false\r\n}",
+					"raw": "{\r\n  \"carId\": 60684,\r\n  \"reportedAt\": \"2023-10-05T08:01:25.051Z\",\r\n  \"mileage\": 151,\r\n  \"liters\": 11,\r\n  \"totalCost\": 11,\r\n  \"forceMileage\": false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
